@@ -1,21 +1,27 @@
 *.sqlite3
 bestoon/*.sqlite3
 web/*.sqlite3
+web/migrations/*.sqlite3
 
 *.egg-info
 bestoon/*.egg-info
 web/*.egg-info
+web/migrations/*.egg-info
 
 *.pot
 bestoon/*.pot
 web/*.pot
+web/migrations/*.pot
 
 *.py[co]
 bestoon/*.py[co]
 web/*.py[co]
+web/migrations/*.py[co]
+
 *.pyc
 bestoon/*.pyc
 web/*.pyc
+web/migrations/*.pyc
 
 .tox/
 __pycache__
