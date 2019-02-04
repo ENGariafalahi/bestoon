@@ -1,8 +1,22 @@
 *.sqlite3
+bestoon/*.sqlite3
+web/*.sqlite3
 
 *.egg-info
+bestoon/*.egg-info
+web/*.egg-info
+
 *.pot
+bestoon/*.pot
+web/*.pot
+
 *.py[co]
+bestoon/*.py[co]
+web/*.py[co]
+*.pyc
+bestoon/*.pyc
+web/*.pyc
+
 .tox/
 __pycache__
 MANIFEST
