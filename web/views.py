@@ -85,7 +85,7 @@ def register(request):
                 msg = MIMEMultipart()
 
                 # setup the parameters of the message
-                message = "برای فعال سازی بستون خود روی لینک روبرو کلیک کنید: {}?email={}&code={}".format(request.build_absolute_url("/accounts/register/"), email, code).encode('utf-8')
+                message = "برای فعال سازی بستون خود روی لینک روبرو کلیک کنید: {}?email={}&code={}".format(request.build_absolute_uri("/accounts/register/"), email, code).encode('utf-8')
                 password = "aria2541"
                 msg["From"] = "mohamadghochi83@gmail.com"
                 msg["To"] = email
