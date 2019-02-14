@@ -1,8 +1,8 @@
 sh bestoonincome.sh
 
 # please set these variables
-TOKEN=12345678
-BASE_URL=http://localhost:8009
+TOKEN=your_token
+BASE_URL=http://poulbedebestoon.ir
 
 
 curl --data "token=$TOKEN&amount=$1&text=$2" $BASE_URL/submit/income/
