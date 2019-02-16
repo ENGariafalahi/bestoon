@@ -107,7 +107,7 @@ def register(request):
 
 
                 context = {'message': 'ایمیلی حاوی لینک فعال سازی اکانت به شما فرستاده شده، لطفا پس از چک کردن ایمیل، روی لینک کلیک کنید.'}
-                return render(request, 'login.html', context)
+                return render(request, 'index.html', context)
 
         else:
             context = {'message': 'متاسفانه این نام کاربری قبلا استفاده شده است. از نام کاربری دیگری استفاده کنید. ببخشید که فرم ذخیره نشده. درست می شه'} #TODO: forgot password
@@ -124,10 +124,10 @@ def register(request):
 
             Passwordresetcodes.objects.filter(code=code).delete() #delete the temporary activation code from db
             context = {'message': '.اکانت شما ساخته شد. توکن شما {} است. ان را ذخیره کنیدچون دیگر نمایش نخواهد شد! جدی'.format(this_token)}
-            return render(request, 'login.html', context)
+            return render(request, 'index.html', context)
         else:
             context = {'message': 'این کد فعال سازی معتبر نیست. در صورت نیاز دوباره تلاش کنید'}
-            return render(request, 'login.html', context)
+            return render(request, 'register.html', context)
     else:
         context = {'message': ''}
         return render(request, 'register.html', context)
