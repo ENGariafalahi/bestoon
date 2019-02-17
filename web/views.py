@@ -24,9 +24,14 @@ from django.conf import settings
 import random
 import string
 import time
+from django.db.models import Sum, Count
+
+
+
+# Create your views here.
+
 
 random_str = lambda N: ''.join(random.SystemRandom().choice(string.ascii_uppercase + string.ascii_lowercase + string.digits) for _ in range(N))
-
 
 
 def get_client_ip(request):
@@ -36,6 +41,7 @@ def get_client_ip(request):
     else:
         ip = request.META.get('REMOTE_ADDR')
     return ip
+
 
 
 def grecaptcha_verify(request):
@@ -50,12 +56,6 @@ def grecaptcha_verify(request):
     verify_rs = requests.get(url, params=params, verify=True)
     verify_rs = verify_rs.json()
     return verify_rs.get("success", False)
-
-
-
-
-# Create your views here.
-
 
 
 
@@ -134,12 +134,11 @@ def register(request):
 
 
 
-
-
 @csrf_exempt
 def submit_expense(request):
 
     # TODO: validate data. user might be fake. token might be fake. amount might be fake. text might be...
+    #TODO: is the token valid?
     this_token = request.POST['token']
     this_user = User.objects.filter(token__token = this_token).get()
     if 'date' in request.POST:
@@ -161,6 +160,7 @@ def submit_expense(request):
 def submit_income(request):
 
     # TODO: validate data. user might be fake. token might be fake. amount might be fake. text might be...
+    #TODO: is the token valid?
     this_token = request.POST['token']
     this_user = User.objects.filter(token__token = this_token).get()
     if 'date' in request.POST:
@@ -183,3 +183,17 @@ def index(request):
     context = {'message': ''}
     return render(request, 'index.html', context)
 
+
+
+@csrf_exempt
+def generalstat(request):
+    #TODO: should get a valid duration (from - to), if not use 1 month
+    #TODO: is the token valid?
+    this_token = request.POST['token']
+    this_user = User.objects.filter(token__token = this_token).get()
+    income = Income.objects.filter(user = this_user).aggregate(Count('amount'), Sum('amount'))
+    expense = Expense.objects.filter(user = this_user).aggregate(Count('amount'), Sum('amount'))
+    context = {}
+    context['income'] = income
+    context['expense'] = expense
+    return JsonResponse(context, encoder=JSONEncoder)
