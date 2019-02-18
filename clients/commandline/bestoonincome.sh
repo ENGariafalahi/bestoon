@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source "$(dirname $0)"/bestoonconfig.sh
+source "$(dirname $0)"/configure.sh
 
 print_usage()
 {
