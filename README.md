@@ -12,7 +12,8 @@ To run Bestoon in development mode; Just use steps below:
 3. Make development environment ready using commands below;
 
   ```bash
-  git clone git@github.com:ENGariafalahi/bestoon.git && cd bestoon
+  git clone git@github.com:ENGariafalahi/bestoon.git
+  cd bestoon
   virtualenv -p python2 build  # Create virtualenv named build
   source build/bin/activate
   pip install -r requirements.txt
@@ -27,9 +28,10 @@ To run Bestoon in development mode; Just use steps below:
 
 If You're On A Windows Machine , Make Environment Ready By Following Steps Below:
 1. Install `python2`, `pip`, `virtualenv` 
-2. Clone the project using:  `git clone https://github.com/ENGariafalahi/bestoon`.
+2. Clone the project `https://github.com/ENGariafalahi/bestoon`.
 3. Make Environment Ready Like This:
 ``` Command Prompt
+git clone git@github.com:ENGariafalahi/bestoon.git
 cd bestoon
 virutalenv -p "PATH\TO\Python.exe" build # Give Full Path To python.exe
 build\Scripts\activate # Activate The Virutal Environment
